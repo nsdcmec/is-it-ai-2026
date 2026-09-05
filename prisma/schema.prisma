@@ -1,0 +1,24 @@
+// Prisma schema for is-it-ai-new
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Picture {
+  id       Int     @id @default(autoincrement())
+  src      String
+  ai       Boolean
+  isVideo  Boolean
+}
+
+model UserScore {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  score     Int
+  createdAt DateTime @default(now())
+}
